@@ -1,19 +1,13 @@
-function add(n1: number, n2: number, showResult: boolean, phrase: string) {
-    // if (typeof n1 !== 'number' || typeof n2 !== 'number') {
-    //     throw new Error('형식이 다릅니다.')
-    // }
-    const result = n1+n2;
-    if (showResult === true) {
-        // console.log(phrase + (n1 + n2));
-        console.log(phrase + result);
-    } else {
-        return n1 + n2;
-    }
-}
+// const person: {
+//     name : string,
+//     age : number
+// } = {
+//     name : 'Maximilian',
+//     age : 30
+// };
+const person = {
+    name : 'Maximilian',
+    age : 30
+};
 
-const number1 = 5.0;
-const number2 = 2.8;
-const printResult = true;
-const resultPhrase = 'Result is: '
-
-add(number1, number2, printResult, resultPhrase);
+console.log(person.name)
