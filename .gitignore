@@ -2,3 +2,8 @@ node_modules
 *.js
 /package.json
 /package-lock.json
+/.idea/aws.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/ts-study.iml
+/.idea/vcs.xml
