@@ -21,36 +21,55 @@ class Department {
     }
 }
 
-class ITDepartment extends Department{
-    admins:string[];
-    constructor(id:string, admins:string[]) {
-        super(id,'IT');
+class ITDepartment extends Department {
+    admins: string[];
+
+    constructor(id: string, admins: string[]) {
+        super(id, 'IT');
         this.admins = admins;
     }
 }
 
-class AccountingDepartment extends Department{
-    constructor(id:string,private reports:string[]) {
+class AccountingDepartment extends Department {
+    private lastReport;
+
+    get mostRecentReport() {
+        if (this.lastReport) {
+            return this.lastReport
+        }
+        throw new Error('No report found.');
+    }
+
+    set mostRecentReport(value: string) {
+        if (!value){
+            throw new Error('Please pass in a valid value');
+        }
+        this.addReport(value);
+    }
+
+    constructor(id: string, private reports: string[]) {
         super(id, 'IT');
+        this.lastReport = reports[0];
     }
 
     addEmployee(name: string) {
-        if (name === 'Max'){
+        if (name === 'Max') {
             return;
         }
         this.employees.push(name)
     }
 
-    addReport(text:string){
+    addReport(text: string) {
         this.reports.push(text);
+        this.lastReport = text;
     }
 
-    printReports(){
+    printReports() {
         console.log(this.reports)
     }
 }
 
-const it = new ITDepartment('d1',['Max']);
+const it = new ITDepartment('d1', ['Max']);
 
 it.addEmployee('Max');
 it.addEmployee('Manu');
@@ -66,8 +85,10 @@ console.log(it);
 // accountingCopy.describe();
 
 
-const accounting = new AccountingDepartment('d2',[]);
+const accounting = new AccountingDepartment('d2', []);
+accounting.mostRecentReport = 'Year End Report';
 accounting.addReport('Something went wrong');
+console.log(accounting.mostRecentReport);
 
 accounting.addEmployee('Max');
 accounting.addEmployee('Manu');
