@@ -7,3 +7,4 @@ node_modules
 /.idea/modules.xml
 /.idea/ts-study.iml
 /.idea/vcs.xml
+/tsconfig.json
